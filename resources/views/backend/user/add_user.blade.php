@@ -23,7 +23,7 @@
                                         <div class="form-group">
                                             <h5>User Role <span class="text-danger">*</span></h5>
                                             <div class="controls">
-                                                <select name="usertype" value="{{ old('usertype') }}" id="select" required="" class="form-control">
+                                                <select name="usertype" value="" id="select" required="" class="form-control">
                                                     <option value="" selected="" disabled="">Select Role</option>
                                                     <option value="Admin">Admin</option>
                                                     <option value="User">User</option>
