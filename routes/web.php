@@ -20,9 +20,10 @@ Route::get('/', function () {
 })->middleware('guest');
 
 Route::middleware([
+    'auth',
     'auth:sanctum',
     config('jetstream.auth_session'),
-    'verified'
+    'verified',
 ])->group(function () {
     Route::get('/dashboard', function () {
         return view('admin.index');
@@ -34,9 +35,9 @@ Route::get('/admin/logout', [AdminController::class, 'logout'])->name('admin.log
 
 
 // User management routes
-Route::prefix('users')->group(function () {
-    Route::get('/view', [UserController::class, 'UserView'])->name('user.view')->middleware('auth');
-    Route::get('/add', [UserController::class, 'UserAdd'])->name('user.add')->middleware('auth');
-    Route::post('/store', [UserController::class, 'UserStore'])->name('user.store')->middleware('auth');
-    Route::get('/edit/{id}', [UserController::class, 'UserEdit'])->name('user.edit')->middleware('auth');
+Route::middleware('auth')->prefix('users')->group(function () {
+    Route::get('/view', [UserController::class, 'UserView'])->name('user.view');
+    Route::get('/add', [UserController::class, 'UserAdd'])->name('user.add');
+    Route::post('/store', [UserController::class, 'UserStore'])->name('user.store');
+    Route::get('/edit/{id}', [UserController::class, 'UserEdit'])->name('user.edit');
 });
