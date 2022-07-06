@@ -14,7 +14,7 @@
             <div class="box-body">
             <div class="row">
                 <div class="col">
-                    <form method="post" action="{{ route('user.edit') }}">
+                    <form method="post" action="{{ route('user.update', $editData->id) }}">
                         @csrf
                         <div class="row">
                             <div class="col-12">
@@ -23,11 +23,9 @@
                                         <div class="form-group">
                                             <h5>User Role <span class="text-danger">*</span></h5>
                                             <div class="controls">
-                                                <select name="usertype" selected="{{ $editData->usertype}}" id="select" required="" class="form-control">
-                                                    <option value="" disabled="">Select Role</option>
-                                                    <option value="Admin">Admin</option>
-                                                    <option value="User">User</option>
-
+                                                <select name="usertype" id="select" required="" class="form-control">
+                                                    <option value="Admin"  {{ (($editData->usertype == 'Admin') ? 'selected' : '') }}>Admin</option>
+                                                    <option value="User" {{ (($editData->usertype == 'User') ? 'selected' : '') }}>User</option>
                                                 </select>
                                             </div>
                                             @error('usertype')
@@ -59,17 +57,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <h5>User Password <span class="text-danger">*</span></h5>
-                                            <div class="controls">
-                                                <input type="password" name="password" class="form-control" required="" >
-                                            </div>
-                                            @error('password')
-                                                <span class="text-danger">{{ $message }}</span>
-                                            @enderror
-                                        </div>
-                                    </div>
+
                                 </div>
 
                             <div class="text-xs-left">
