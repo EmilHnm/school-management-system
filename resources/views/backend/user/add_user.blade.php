@@ -22,14 +22,13 @@
                                         <div class="form-group">
                                             <h5>User Role <span class="text-danger">*</span></h5>
                                             <div class="controls">
-                                                <select name="usertype" value="" id="select" required="" class="form-control">
+                                                <select name="role" value="" id="role" required="" class="form-control">
                                                     <option value="" selected="" disabled="">Select Role</option>
                                                     <option value="Admin">Admin</option>
-                                                    <option value="User">User</option>
-
+                                                    <option value="Operator">Operator</option>
                                                 </select>
                                             </div>
-                                            @error('usertype')
+                                            @error('role')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
@@ -54,17 +53,6 @@
                                                 <input type="email" name="email" class="form-control" required="" value="{{ old('email') }}">
                                             </div>
                                             @error('email')
-                                                <span class="text-danger">{{ $message }}</span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <h5>User Password <span class="text-danger">*</span></h5>
-                                            <div class="controls">
-                                                <input type="password" name="password" class="form-control" required="" >
-                                            </div>
-                                            @error('password')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>

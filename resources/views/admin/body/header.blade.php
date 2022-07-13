@@ -1,4 +1,6 @@
-
+@php
+    $image = Auth::user()->image;
+@endphp
 
 <header class="main-header">
     <!-- Header Navbar -->
@@ -106,7 +108,7 @@
             <!-- User Account-->
             <li class="dropdown user user-menu">
             <a href="#" class="waves-effect waves-light rounded dropdown-toggle p-0" data-toggle="dropdown" title="User">
-                <img src="{{  !empty($user->image)  ? ('/upload/user_images/'.$user->image) : asset('upload/user3-128x128.jpg')  }}" alt="">
+                <img src="{{  !empty($image)  ? ('/upload/user_images/'.$image) : asset('upload/user3-128x128.jpg')  }}" alt="">
             </a>
             <ul class="dropdown-menu animated flipInX">
                 <li class="user-body">

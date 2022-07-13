@@ -12,7 +12,7 @@ class UserController extends Controller
     public function UserView()
     {
         // $allData = User::all();
-        $data['allData'] = User::all();
+        $data['allData'] = User::where('usertype', 'Admin')->get();
         return view('backend.user.view_user', $data);
     }
 
@@ -24,17 +24,20 @@ class UserController extends Controller
     public function UserStore(Request $request)
     {
         $validatedData  = $request->validate([
-            'usertype' => 'required',
+            'role' => 'required',
             'name' => 'required',
             'email' => 'required|unique:users',
-            'password' => 'required|min:8',
         ]);
 
+
+        $code = rand(0000, 9999);
         $data = new User();
+        $data->usertype = 'Admin';
         $data->name = $request->name;
+        $data->role = $request->role;
         $data->email = $request->email;
-        $data->password = bcrypt($request->password);
-        $data->usertype = $request->usertype;
+        $data->password = bcrypt($code);
+        $data->code = $code;
         $data->save();
 
         $message = array(
@@ -57,7 +60,7 @@ class UserController extends Controller
         $data = User::find($id);
         $data->name = $request->name;
         $data->email = $request->email;
-        $data->usertype = $request->usertype;
+        $data->role = $request->role;
         $data->save();
 
         $message = array(

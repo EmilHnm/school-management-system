@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('student_id');
             $table->integer('class_id');
             $table->integer('year_id');
+            $table->integer('roll')->nullable();
             $table->integer('group_id')->nullable();
             $table->integer('shift_id')->nullable();
             $table->timestamps();

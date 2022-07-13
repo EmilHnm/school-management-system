@@ -92,10 +92,10 @@
                                             @enderror
                                         </div>
                                         <div class="form-group">
-                                        <div class="controls">
-                                            <img id="showImg" class="rounded-circle" src="{{  !empty($user->profile_photo_path)  ? ('upload/user_image/'.$user->profile_photo_path) : asset('upload/user3-128x128.jpg')  }}" style="width:100px; height:100px; border: 1px solid #000" alt="User Avatar">
+                                            <div class="controls">
+                                                <img id="showImg" class="rounded-circle" src="{{  !empty($user->image)  ? ('upload/user_image/'.$user->image) : asset('/upload/user3-128x128.jpg')  }}" style="width:100px; height:100px; border: 1px solid #000" alt="User Avatar">
+                                            </div>
                                         </div>
-                                    </div>
                                     </div>
                                 </div>
                             <div class="text-xs-left">

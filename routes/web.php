@@ -142,4 +142,9 @@ Route::middleware('auth')->prefix('setup')->group(function () {
 Route::middleware('auth')->prefix('students')->group(function () {
     //Designation Route
     Route::get('reg/view', [StudentRegController::class, 'StudentRegView'])->name('student.registration.view');
+    Route::get('reg/add', [StudentRegController::class, 'StudentRegAdd'])->name('student.registration.add');
+    Route::post('reg/store', [StudentRegController::class, 'StudentRegStore'])->name('student.registration.store');
+    Route::get('year/class/wise', [StudentRegController::class, 'StudentClassYearWise'])->name('student.year.class.wise');
+    Route::get('reg/edit/{student_id}', [StudentRegController::class, 'StudentRegEdit'])->name('student.registration.edit');
+    Route::post('reg/update/{student_id}', [StudentRegController::class, 'StudentRegUpdate'])->name('student.registration.update');
 });
