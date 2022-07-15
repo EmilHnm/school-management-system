@@ -84,8 +84,9 @@
                                                 <td>{{ $student['student']['code'] }}</td>
                                             @endif
                                             <td>
-                                                <a href="{{ route('student.registration.edit',$student->student_id) }}" class="btn btn-info mb-5">Edit</a>
-                                                <a href="{{ route('student.year.delete',$student->id) }}" class="btn btn-danger mb-5" id="delete">Delete</a>
+                                                <a href="{{ route('student.registration.edit',$student->student_id) }}" class="btn btn-info mb-5"><i class="fa fa-edit"></i></a>
+                                                <a href="{{ route('student.registration.promotion',$student->student_id) }}" class="btn btn-danger mb-5" ><i class="fa fa-check"></i></a>
+                                                <a href="{{ route('student.registration.details',$student->student_id) }}" target="_blank" class="btn btn-success mb-5" ><i class="fa fa-eye"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -139,8 +140,9 @@
                                                 <td>{{ $student['student']['code'] }}</td>
                                             @endif
                                             <td>
-                                                <a href="{{ route('student.year.edit',$student->id) }}" class="btn btn-info mb-5">Edit</a>
-                                                <a href="{{ route('student.year.delete',$student->id) }}" class="btn btn-danger mb-5" id="delete">Delete</a>
+                                                <a href="{{ route('student.registration.edit',$student->student_id) }}" class="btn btn-info mb-5" title="World Health Organization"><i class="fa fa-edit"></i></a>
+                                                <a href="{{ route('student.registration.promotion',$student->student_id) }}" class="btn btn-danger mb-5" ><i class="fa fa-check"></i></a>
+                                                <a href="{{ route('student.registration.details',$student->student_id) }}" class="btn btn-danger mb-5" ><i class="fa fa-eye"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach

@@ -23,6 +23,15 @@ class AssignStudent extends Model
     {
         return $this->belongsTo(StudentYear::class, 'year_id');
     }
+    public function student_group()
+    {
+        return $this->belongsTo(StudentGroup::class, 'group_id');
+    }
+    public function student_shift()
+    {
+        return $this->belongsTo(StudentShift::class, 'shift_id');
+    }
+
 
     public function discount()
     {
