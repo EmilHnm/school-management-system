@@ -1,6 +1,6 @@
 <html>
 	<head>
-        <title>Your Name</title>
+        <title>Monthly Fee Slip - {{ $editData['student']['name'] }}</title>
         <link href='http://fonts.googleapis.com/css?family=Rokkitt:400,700|Lato:400,300' rel='stylesheet' type='text/css'>
             <style>
                 /*Define color of the theme*/
@@ -33,6 +33,7 @@
                     padding: 25px 35px 10px;
                     border-bottom: 4px solid var(--main-color);
                     display: flex;
+                    justify-content: space-evenly;
                 }
 
                 #photo {
@@ -75,21 +76,27 @@
                 #name {
                     float: left;
                 }
-                .contactDetails {
+                .slipHeaderDetails {
                     float: right;
+
                 }
 
-                #contactDetails ul {
+                #slipHeaderDetails {
+                    display: flex;
+                    align-items: center;
+                }
+
+                #slipHeaderDetails ul {
                     list-style-type: none;
                     font-size: 0.8em;
                     margin-top: 2px;
                     text-align: right;
                 }
-                #contactDetails ul li {
+                #slipHeaderDetails ul li {
                     margin-bottom: 3px;
                     color: #444;
                 }
-                #contactDetails ul li a, a[href^=tel] {
+                #slipHeaderDetails ul li a, a[href^=tel] {
                     color: #444;
                     text-decoration: none;
                 }
@@ -288,20 +295,18 @@
     <page size="A4"> <!-- Begin first page -->
         <!-- ==================================     TOP BAR    ================================== -->
         <div class="topBar">
-            <div id="photo">
-                <img src="{{  !empty($editData['student']['image'])  ? ('/upload/student_images/'.$editData['student']['image']) : asset('upload/user3-128x128.jpg')  }}"  class="image_cropper">
-            </div>
 
             <div id="name">
-                <h1 class="">{{ $editData['student']['name'] }}</h1>
-                <h2 class="">Student</h2>
+                <h1 class="">Monthly Fee Slip</h1>
+                <h2 class="">School Keep</h2>
             </div>
 
-            <div id="contactDetails" >
+            <div id="slipHeaderDetails" >
                 <ul>
                     <li>Swallowtail School Management</li>
                     <li><a href="#" target="_blank" >www.school-management.com</a></li>
                     <li><a href="https://github.com/EmilRailgun" target="_blank">EmilRailgun</a></li>
+                    <li><strong>Create date:</strong> {{ Carbon\Carbon::now('Asia/Ho_Chi_Minh')->toDateString() }}</li>
                 </ul>
             </div>
         </div>
@@ -338,18 +343,36 @@
                             </table>
                         </div>
                     </article>
+                </div>
+            </section>
+
+            <section><!-- ==============================     FEE    ============================= -->
+                <div class="section">
+                    <h1 class="sectionTitle">Fee</h1>
                     <article>
-                        <div class="rectangle"></div>
-                        <p class="workTitle">Family</p>
+                        <p class="workTitle">Study Fee</p>
                         <div class="workContent">
                             <table class="personal-table">
                                 <tr>
-                                    <td class="table-title">Father's Name</td>
-                                    <td>{{ $editData['student']['fname'] }}</td>
+                                    <td class="table-title-study">Monthly Fee</td>
+                                    <td class="table-title-study">Discount Fee</td>
+                                    <td class="table-title-study">Final Fee of {{ $month }}</td>
+
                                 </tr>
                                 <tr>
-                                    <td class="table-title">Mother's Name</td>
-                                    <td>{{ $editData['student']['mname'] }}</td>
+                                    @php
+                                        $registrantion_fee = App\Models\FeeCategoryAmount::where('fee_category_id', 2)
+                                            ->where('class_id', $editData->class_id)
+                                            ->first();
+
+                                        $originalFee = $registrantion_fee->amount;
+                                        $discount = $editData->discount->discount;
+                                        $discountTableFee = $discount / 100 * $originalFee;
+                                        $finalFee = (float)$originalFee - (float)$discountTableFee;
+                                    @endphp
+                                    <td style="text-align:center">{{ $originalFee }}</td>
+                                    <td style="text-align:center">{{ $discount . '%' }}</td>
+                                    <td style="text-align:center">{{ $finalFee }}</td>
                                 </tr>
 
                             </table>
@@ -357,30 +380,90 @@
                     </article>
                 </div>
             </section>
+        </div>
+    </page>
+    <page size="A4"> <!-- Begin first page -->
+        <!-- ==================================     TOP BAR    ================================== -->
+        <div class="topBar">
 
-            <section><!-- ==============================     STUDY    ============================= -->
+
+            <div id="name">
+                <h1 class="">Monthly Fee Slip</h1>
+                <h2 class="">Student Keep</h2>
+            </div>
+
+            <div id="slipHeaderDetails" >
+                <ul>
+                    <li>Swallowtail School Management</li>
+                    <li><a href="#" target="_blank" >www.school-management.com</a></li>
+                    <li><a href="https://github.com/EmilRailgun" target="_blank">EmilRailgun</a></li>
+                    <li><strong>Create date:</strong> {{ Carbon\Carbon::now('Asia/Ho_Chi_Minh')->toDateString() }}</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="mainDocument">
+            <section><!-- ==============================     STUDENT INFORMATION     ============================= -->
                 <div class="section">
-                    <h1 class="sectionTitle">Study</h1>
+                    <h1 class="sectionTitle">INFORMATION</h1>
                     <article>
-                        <p class="workTitle">Study Program</p>
+                        <div class="rectangle"></div>
+                        <p class="workTitle">Personal Information</p>
                         <div class="workContent">
                             <table class="personal-table">
                                 <tr>
-                                    <td class="table-title-study">Year</td>
-                                    <td class="table-title-study">Class</td>
-                                    <td class="table-title-study">Group</td>
-                                    <td class="table-title-study">Roll</td>
-                                    <td class="table-title-study">Shift</td>
+                                    <td class="table-title">Name</td>
+                                    <td>{{ $editData['student']['name'] }}</td>
                                 </tr>
-                                @foreach ($assigns_student as $assign)
-                                    <tr>
-                                        <td style="text-align:center">{{ $assign['student_year']['name'] }}</td>
-                                        <td style="text-align:center">{{ $assign['student_class']['name'] }}</td>
-                                        <td style="text-align:center">{{ $assign['student_group']['name'] }}</td>
-                                        <td style="text-align:center">{{ $assign['roll'] ? $assign['roll'] : 'None'}}</td>
-                                        <td style="text-align:center">{{ $assign['student_shift']['name'] }}</td>
-                                    </tr>
-                                @endforeach
+                                <tr>
+                                    <td class="table-title">Gender</td>
+                                    <td>{{ $editData['student']['gender'] }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="table-title">Date of Birht</td>
+                                    <td>{{ $editData['student']['dob'] }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="table-title">Address</td>
+                                    <td>{{ $editData['student']['address'] }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="table-title">Mobile Number</td>
+                                    <td>{{ $editData['student']['mobile'] }}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section><!-- ==============================     FEE    ============================= -->
+                <div class="section">
+                    <h1 class="sectionTitle">Fee</h1>
+                    <article>
+                        <p class="workTitle">Study Fee</p>
+                        <div class="workContent">
+                            <table class="personal-table">
+                                <tr>
+                                    <td class="table-title-study">Monthly Fee</td>
+                                    <td class="table-title-study">Discount Fee</td>
+                                    <td class="table-title-study">Final Fee</td>
+
+                                </tr>
+                                <tr>
+                                    @php
+                                        $registrantion_fee = App\Models\FeeCategoryAmount::where('fee_category_id', 2)
+                                            ->where('class_id', $editData->class_id)
+                                            ->first();
+                                        $originalFee = $registrantion_fee->amount;
+                                        $discount = $editData->discount->discount;
+                                        $discountTableFee = $discount / 100 * $originalFee;
+                                        $finalFee = (float)$originalFee - (float)$discountTableFee;
+                                    @endphp
+                                    <td style="text-align:center">{{ $originalFee }}</td>
+                                    <td style="text-align:center">{{ $discount . '%' }}</td>
+                                    <td style="text-align:center">{{ $finalFee }}</td>
+                                </tr>
                             </table>
                         </div>
                     </article>

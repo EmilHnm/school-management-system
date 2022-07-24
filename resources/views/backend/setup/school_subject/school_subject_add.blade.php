@@ -6,7 +6,7 @@
         <section class="content">
         <div class="box">
             <div class="box-header with-border">
-                <h4 class="box-title">Add Student Class</h4>
+                <h4 class="box-title">Add School Subject</h4>
             </div>
             <div class="box-body">
                 <div class="row">

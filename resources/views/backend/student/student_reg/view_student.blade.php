@@ -27,7 +27,6 @@
                                     <div class="form-group">
                                         <h5>Class </h5>
                                         <select name="class_id" id="class_id"  class="form-control">
-                                            <option value selected disabled>Select Class</option>
                                             @foreach ($classes as $class)
                                                 <option value="{{ $class->id }}" {{ (@$class_id == $class->id) ?  "selected" : '' }}>{{ $class->name }}</option>
                                             @endforeach

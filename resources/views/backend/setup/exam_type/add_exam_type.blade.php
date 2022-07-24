@@ -6,7 +6,7 @@
         <section class="content">
         <div class="box">
             <div class="box-header with-border">
-                <h4 class="box-title">Add Student Class</h4>
+                <h4 class="box-title">Add Exam Type</h4>
             </div>
             <div class="box-body">
                 <div class="row">
@@ -16,7 +16,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <h5>Exxam Type Name <span class="text-danger">*</span></h5>
+                                        <h5>Exam Type Name <span class="text-danger">*</span></h5>
                                         <div class="controls">
                                             <input type="text" name="name" class="form-control">
                                         </div>
