@@ -317,7 +317,7 @@ class StudentRegController extends Controller
         $data['editData'] = AssignStudent::with(['student', 'discount'])
             ->where('student_id', $student_id)
             ->first();
-        $data['assigns_student'] = AssignStudent::where('student_id', $student_id)->get();
+
         //dd($data['assigns_student']);
         $pdf = PDF::loadView('backend.student.student_reg.detail_student', $data)
             ->setOptions(['defaultFont' => 'sans-serif']);
