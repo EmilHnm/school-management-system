@@ -18,7 +18,11 @@ class CheckAuthRole
     public function handle(Request $request, Closure $next)
     {
         if (Auth::user()->role != 'Admin') {
-            return redirect()->route('dashboard');
+            $message = array(
+                'message' => 'You don\'t have permission to access this page.',
+                'alert-type' => 'danger'
+            );
+            return redirect()->route('dashboard')->with($message);
         }
         return $next($request);
     }

@@ -321,7 +321,7 @@ class StudentRegController extends Controller
         //dd($data['assigns_student']);
         $pdf = PDF::loadView('backend.student.student_reg.detail_student', $data)
             ->setOptions(['defaultFont' => 'sans-serif']);
-        // return view('backend.student.student_reg.detail_student', $data);
-        return $pdf->download("student_details_" . $student_id . ".pdf");
+        return view('backend.student.student_reg.detail_student', $data);
+        //return $pdf->download("student_details_" . $student_id . ".pdf");
     }
 }

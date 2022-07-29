@@ -19,6 +19,8 @@ use App\Http\Controllers\Backend\Setup\AssignSubjectController;
 use App\Http\Controllers\Backend\Setup\SchoolSubjectController;
 use App\Http\Controllers\Backend\Student\StudentRollController;
 use App\Http\Controllers\Backend\Employee\EmployeeRegController;
+use App\Http\Controllers\Backend\Employee\EmployeeLeaveController;
+use App\Http\Controllers\Backend\Employee\EmployeeSalaryController;
 use App\Http\Controllers\Backend\Student\RegistrationFeeController;
 
 /*
@@ -177,4 +179,15 @@ Route::middleware('auth')->prefix('students')->group(function () {
 Route::middleware('auth')->prefix('employees')->group(function () {
     //Registration Route
     Route::get('reg/view', [EmployeeRegController::class, 'EmployeeRegView'])->name('employee.registration.view');
+    Route::get('reg/add', [EmployeeRegController::class, 'EmployeeRegAdd'])->name('employee.registration.add');
+    Route::post('reg/store', [EmployeeRegController::class, 'EmployeeRegStore'])->name('employee.registration.store');
+    Route::get('reg/edit/{id}', [EmployeeRegController::class, 'EmployeeRegEdit'])->name('employee.registration.edit');
+    Route::post('reg/update/{id}', [EmployeeRegController::class, 'EmployeeRegUpdate'])->name('employee.registration.update');
+    Route::get('reg/details/{id}', [EmployeeRegController::class, 'EmployeeRegDetails'])->name('employee.registration.details');
+    //Salary Route
+    Route::get('salary/view', [EmployeeSalaryController::class, 'SalaryView'])->name('employee.salary.view');
+    Route::get('salary/increment/{id}', [EmployeeSalaryController::class, 'SalaryIncrement'])->name('employee.salary.increment');
+    Route::post('salary/increment/update/{id}', [EmployeeSalaryController::class, 'SalaryUpdate'])->name('employee.salary.increament.update');
+    //Leave Route
+    Route::get('leave/view', [EmployeeLeaveController::class, 'LeaveView'])->name('employee.leave.view');
 });

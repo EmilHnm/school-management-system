@@ -80,15 +80,7 @@
                                 </div>
                             </form>
 
-                            <div class="text-center text-white">
-                            <p class="mt-20">- Sign With -</p>
-                            <p class="gap-items-2 mb-20">
-                                <a class="btn btn-social-icon btn-round btn-outline btn-white" href="#"><i class="fa fa-facebook"></i></a>
-                                <a class="btn btn-social-icon btn-round btn-outline btn-white" href="#"><i class="fa fa-twitter"></i></a>
-                                <a class="btn btn-social-icon btn-round btn-outline btn-white" href="#"><i class="fa fa-google-plus"></i></a>
-                                <a class="btn btn-social-icon btn-round btn-outline btn-white" href="#"><i class="fa fa-instagram"></i></a>
-                                </p>
-                            </div>
+
 
                             <div class="text-center">
                                 <p class="mt-15 mb-0 text-white">Don't have an account? <a href="/register" class="text-info ml-5">Sign Up</a></p>

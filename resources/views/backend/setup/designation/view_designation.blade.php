@@ -29,7 +29,7 @@
                                     <td>{{ $designation->name }}</td>
                                     <td>
                                         <a href="{{ route('designation.edit',$designation->id) }}" class="btn btn-info mb-5">Edit</a>
-                                        <a href="{{ route('designation.delete',$designation->id) }}" class="btn btn-danger mb-5" id="delete">Delete</a>
+                                        <a href="{{ route('designation.delete',$designation->id) }}" class="btn btn-danger mb-5">Details</a>
                                     </td>
                                 </tr>
                             @endforeach

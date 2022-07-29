@@ -88,13 +88,15 @@ $route = Route::current()->getName();
             </li>
             <li class="treeview {{ ($prefix == '/employees') ? 'active':'' }}">
                 <a href="#">
-                    <i data-feather="credit-card"></i> <span>Employyee Management</span>
+                    <i data-feather="credit-card"></i> <span>Employee Management</span>
                     <span class="pull-right-container">
                     <i class="fa fa-angle-right pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{ route('student.registration.view') }}"><i class="ti-more"></i>Employee Registration</a></li>
+                    <li><a href="{{ route('employee.registration.view') }}"><i class="ti-more"></i>Employee Registration</a></li>
+                    <li><a href="{{ route('employee.salary.view') }}"><i class="ti-more"></i>Employee Salary</a></li>
+                    <li><a href="{{ route('employee.leave.view') }}"><i class="ti-more"></i>Employee Leave</a></li>
                 </ul>
             </li>
             <li class="header nav-small-cap">User Interface</li>
