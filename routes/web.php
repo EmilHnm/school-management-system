@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\Backend\DefaultController;
 use App\Http\Controllers\Backend\ProfileController;
+use App\Http\Controllers\Backend\Marks\MarksController;
 use App\Http\Controllers\Backend\Setup\ExamTypeController;
 use App\Http\Controllers\Backend\Setup\FeeAmountController;
 use App\Http\Controllers\Backend\Student\ExamFeeController;
@@ -22,6 +24,8 @@ use App\Http\Controllers\Backend\Employee\EmployeeRegController;
 use App\Http\Controllers\Backend\Employee\EmployeeLeaveController;
 use App\Http\Controllers\Backend\Employee\EmployeeSalaryController;
 use App\Http\Controllers\Backend\Student\RegistrationFeeController;
+use App\Http\Controllers\Backend\Employee\EmployeeAttendanceController;
+use App\Http\Controllers\Backend\Employee\EmployeeMonthlySalaryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -190,4 +194,26 @@ Route::middleware('auth')->prefix('employees')->group(function () {
     Route::post('salary/increment/update/{id}', [EmployeeSalaryController::class, 'SalaryUpdate'])->name('employee.salary.increament.update');
     //Leave Route
     Route::get('leave/view', [EmployeeLeaveController::class, 'LeaveView'])->name('employee.leave.view');
+    Route::get('leave/add', [EmployeeLeaveController::class, 'LeaveAdd'])->name('employee.leave.add');
+    Route::post('leave/store', [EmployeeLeaveController::class, 'LeaveStore'])->name('employee.leave.store');
+    Route::get('leave/edit/{id}', [EmployeeLeaveController::class, 'LeaveEdit'])->name('employee.leave.edit');
+    Route::post('leave/update/{id}', [EmployeeLeaveController::class, 'LeaveUpdate'])->name('employee.leave.update');
+    Route::get('leave/delete/{id}', [EmployeeLeaveController::class, 'LeaveDelete'])->name('employee.leave.delete');
+    //Attendance Route
+    Route::get('attendance/view', [EmployeeAttendanceController::class, 'AttendanceView'])->name('employee.attendance.view');
+    Route::get('attendance/add', [EmployeeAttendanceController::class, 'AttendanceAdd'])->name('employee.attendance.add');
+    Route::post('attendance/store', [EmployeeAttendanceController::class, 'AttendanceStore'])->name('employee.attendance.store');
+    Route::get('attendance/edit/{date}', [EmployeeAttendanceController::class, 'AttendanceEdit'])->name('employee.attendance.edit');
+    Route::post('attendance/update/{date}', [EmployeeAttendanceController::class, 'AttendanceUpdate'])->name('employee.attendance.update');
+    Route::get('attendance/details/{date}', [EmployeeAttendanceController::class, 'AttendanceDetails'])->name('employee.attendance.details');
+    Route::get('attendance/delete/{date}', [EmployeeAttendanceController::class, 'AttendanceDelete'])->name('employee.attendance.delete');
+    //MOnthly Salary Route
+    Route::get('monthly/salary/view', [EmployeeMonthlySalaryController::class, 'MonthlySalaryView'])->name('employee.monthly.salary.view');
+    Route::get('monthly/salary/get', [EmployeeMonthlySalaryController::class, 'MonthlySalaryGet'])->name('employee.monthly.salary.get');
+    Route::get('monthly/salary/payslip', [EmployeeMonthlySalaryController::class, 'MonthlySalaryPayslip'])->name('employee.monthly.salary.payslip');
+});
+
+Route::middleware('auth')->prefix('marks')->group(function () {
+    Route::get('entry/add', [MarksController::class, 'MarksAdd'])->name('marks.entry.add');
+    Route::get('entry/getsubject', [DefaultController::class, 'GetSubject'])->name('marks.getsubject');
 });

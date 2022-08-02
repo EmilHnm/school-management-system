@@ -97,6 +97,19 @@ $route = Route::current()->getName();
                     <li><a href="{{ route('employee.registration.view') }}"><i class="ti-more"></i>Employee Registration</a></li>
                     <li><a href="{{ route('employee.salary.view') }}"><i class="ti-more"></i>Employee Salary</a></li>
                     <li><a href="{{ route('employee.leave.view') }}"><i class="ti-more"></i>Employee Leave</a></li>
+                    <li><a href="{{ route('employee.attendance.view') }}"><i class="ti-more"></i>Employee Attendance</a></li>
+                    <li><a href="{{ route('employee.monthly.salary.view') }}"><i class="ti-more"></i>Employee Monthly Salary</a></li>
+                </ul>
+            </li>
+            <li class="treeview {{ ($prefix == '/marks') ? 'active':'' }}">
+                <a href="#">
+                    <i data-feather="credit-card"></i> <span>Marks Management</span>
+                    <span class="pull-right-container">
+                    <i class="fa fa-angle-right pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ route('marks.entry.add') }}"><i class="ti-more"></i>Marks Entry</a></li>
                 </ul>
             </li>
             <li class="header nav-small-cap">User Interface</li>

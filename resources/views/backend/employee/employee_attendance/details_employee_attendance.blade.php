@@ -8,8 +8,10 @@
             <div class="col-12">
                 <div class="box">
                     <div class="box-header with-border">
-                    <h3 class="box-title">Employee Leave</h3>
-                    <a href="{{ route('employee.leave.add') }}" style="float: right" class="btn btn-rounded btn-success mb-5">Add Employee Leave</a>
+                    <h3 class="box-title">Employee Attendance - {{ $details[0]['date'] }}</h3>
+                    @if (Auth::user()->role == 'Admin')
+                        <a href="{{ route('employee.attendance.delete', $details[0]['date']) }}" style="float: right" class="btn btn-rounded btn-danger mb-5" id="delete">Delete</a>
+                    @endif
                 </div>
 
                 <div class="box-body">
@@ -18,41 +20,31 @@
                         <thead>
                             <tr>
                                 <th>SL</th>
+
                                 <th>Name</th>
-                                <th>Id No</th>
-                                <th>Purose</th>
-                                <th>Start date</th>
-                                <th>End date</th>
-                                <th>Action</th>
+                                <th>ID No</th>
+                                <th>Attend Status</th>
+
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($allData as $index => $leave)
+                            @foreach ($details as $index => $attendance)
                                 <tr>
                                     <td>{{ $index+1 }}</td>
-                                    <td>{{ $leave->user->name }}</td>
-                                    <td>{{ $leave->user->id_no }}</td>
-                                    <td>{{ $leave->purpose->name }}</td>
-                                    <td>{{ $leave->start_date }}</td>
-                                    <td>{{ $leave->end_date }}</td>
-                                    <td>
-                                        <a href="{{ route('employee.leave.edit',$leave->id) }}" class="btn btn-info mb-5">Edit</a>
-                                        <a href="{{ route('employee.leave.delete',$leave->id) }}" class="btn btn-danger mb-5">Delete</a>
-                                    </td>
+
+                                    <td>{{ $attendance->user->name }}</td>
+                                    <td>{{ $attendance->user->id_no }}</td>
+                                    <td>{{ $attendance->attend_status }}</td>
+
                                 </tr>
                             @endforeach
                         </tbody>
                         <tfoot>
                             <tr>
                                 <th style="width:5%">SL</th>
-
                                 <th>Name</th>
-                                <th>Id No</th>
-                                <th>Purose</th>
-                                <th>Start date</th>
-                                <th>End date</th>
-
-                                <th style="width:20%">Action</th>
+                                <th>ID No</th>
+                                <th>Attend Status</th>
                             </tr>
                         </tfoot>
                     </table>
