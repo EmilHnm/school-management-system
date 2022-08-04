@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\DefaultController;
 use App\Http\Controllers\Backend\ProfileController;
+use App\Http\Controllers\Backend\Marks\GradeController;
 use App\Http\Controllers\Backend\Marks\MarksController;
 use App\Http\Controllers\Backend\Setup\ExamTypeController;
 use App\Http\Controllers\Backend\Setup\FeeAmountController;
@@ -12,6 +13,7 @@ use App\Http\Controllers\Backend\Student\ExamFeeController;
 use App\Http\Controllers\Backend\Setup\DesignationController;
 use App\Http\Controllers\Backend\Setup\FeeCategoryController;
 use App\Http\Controllers\Backend\Setup\StudentYearController;
+use App\Http\Controllers\Backend\Account\StudentFeeController;
 use App\Http\Controllers\Backend\Setup\StudentClassController;
 use App\Http\Controllers\Backend\Setup\StudentGroupController;
 use App\Http\Controllers\Backend\Setup\StudentShiftController;
@@ -215,5 +217,20 @@ Route::middleware('auth')->prefix('employees')->group(function () {
 
 Route::middleware('auth')->prefix('marks')->group(function () {
     Route::get('entry/add', [MarksController::class, 'MarksAdd'])->name('marks.entry.add');
+    Route::post('entry/store', [MarksController::class, 'MarksStore'])->name('marks.entry.store');
+    Route::get('entry/edit', [MarksController::class, 'MarksEdit'])->name('marks.entry.edit');
+    Route::post('entry/update', [MarksController::class, 'MarksUpdate'])->name('marks.entry.update');
     Route::get('entry/getsubject', [DefaultController::class, 'GetSubject'])->name('marks.getsubject');
+    Route::get('entry/getstudent', [DefaultController::class, 'GetStudent'])->name('marks.getstudents');
+    Route::get('entry/edit/getstudent', [DefaultController::class, 'GetStudentMarks'])->name('marks.edit.getstudents');
+
+    Route::get('entry/grade/view', [GradeController::class, 'MarksGradeView'])->name('marks.entry.grade.view');
+    Route::get('entry/grade/add', [GradeController::class, 'MarksGradeAdd'])->name('marks.entry.grade.add');
+    Route::get('entry/grade/edit/{id}', [GradeController::class, 'MarksGradeEdit'])->name('marks.entry.grade.edit');
+    Route::post('entry/grade/store', [GradeController::class, 'MarksGradeStore'])->name('marks.entry.grade.store');
+    Route::post('entry/grade/update/{id}', [GradeController::class, 'MarksGradeUpdate'])->name('marks.entry.grade.update');
+});
+
+Route::middleware('auth')->prefix('accounts')->group(function () {
+    Route::get('student.fee/view', [StudentFeeController::class, 'StudentFeeView'])->name('student.fee.view');
 });

@@ -26,7 +26,7 @@
                                                     @endforeach
                                                 </select>
                                             </div>
-                                            @error('usertype')
+                                            @error('class_id')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
@@ -42,7 +42,7 @@
                                                             @endforeach
                                                         </select>
                                                     </div>
-                                                    @error('usertype')
+                                                    @error('subject_id[]')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
                                                 </div>
@@ -53,7 +53,7 @@
                                                     <div class="controls">
                                                         <input type="text" name="full_mark[]" class="form-control">
                                                     </div>
-                                                    @error('amount')
+                                                    @error('full_mark[]')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
                                                 </div>
@@ -64,7 +64,7 @@
                                                     <div class="controls">
                                                         <input type="text" name="pass_mark[]" class="form-control">
                                                     </div>
-                                                    @error('amount')
+                                                    @error('pass_mark[]')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
                                                 </div>
@@ -75,7 +75,7 @@
                                                     <div class="controls">
                                                         <input type="text" name="subjective_mark[]" class="form-control">
                                                     </div>
-                                                    @error('amount')
+                                                    @error('subjective_mark[]')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
                                                 </div>

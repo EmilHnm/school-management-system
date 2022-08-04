@@ -11,7 +11,7 @@
                             <h4 class="box-title">Student <strong>Marks Entry</strong></h4>
                         </div>
                         <div class="box-body">
-                            <form method="post" action="{{ route('marks.entry.store') }}">
+                            <form method="post" action="{{ route('marks.entry.update') }}">
                                 @csrf
                                 <div class="row" >
                                     <div class="col-md-3">
@@ -86,7 +86,7 @@
 
                                             </tbody>
                                         </table>
-                                        <input type="submit" class="btn btn-rounded btn-info"  value="Submit">
+                                        <input type="submit" class="btn btn-rounded btn-info"  value="Update">
                                     </div>
                                 </div>
                                 {{-- <input type="submit" class="btn btn-info" value="Roll Generate"> --}}
@@ -110,7 +110,7 @@
         let class_id = document.getElementById('class_id').value;
         let assign_subject_id = document.getElementById('assign_subject_id').value;
         let exam_type_id = document.getElementById('exam_type_id').value;
-        let url = new URL("{{ route('marks.getstudents') }}");
+        let url = new URL("{{ route('marks.edit.getstudents') }}");
         let param = {
             year_id: year_id,
             class_id: class_id,
@@ -134,14 +134,13 @@
                             html += `<tr>
                                         <td>
                                             ${element.student.id_no}
-                                            <input type="hidden" name="student_id[]" value="${element.student_id}" />
-                                            <input type="hidden" name="id_no[]" value="${element.student.id_no}" />
+                                            <input type="hidden" name="id[]" value="${element.id}" />
                                         </td>
                                         <td>${element.student.name}</td>
                                         <td>${element.student.gender}</td>
                                         <td>${element.student.dob}</td>
                                         <td>
-                                            <input type="text" class="form-control form-control-sm" name="marks[]" >
+                                            <input type="text" class="form-control form-control-sm" name="marks[]" value="${ element.marks }">
                                         </td>
                                     </tr>`
                         });
