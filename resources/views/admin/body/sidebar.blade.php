@@ -10,7 +10,7 @@ $route = Route::current()->getName();
             <div class="ulogo">
                 <a href="/">
                     <div class="d-flex align-items-center justify-content-center">
-                        <img src="{{ asset('backend/images/logo-dark.png') }}" alt="">
+                        <img src="{{ asset('backend/images/logo-dark.png') }}" alt="" width="30" height="30">
                         <h3><b>School</b> Admin</h3>
                     </div>
                 </a>
