@@ -16,11 +16,11 @@ return new class extends Migration
         Schema::create('marks_grades', function (Blueprint $table) {
             $table->id();
             $table->string('grade_name');
-            $table->string('grade_point');
-            $table->string('start_marks');
-            $table->string('end_marks');
-            $table->string('start_point');
-            $table->string('end_point');
+            $table->float('grade_point');
+            $table->float('start_marks');
+            $table->float('end_marks');
+            $table->float('start_point');
+            $table->float('end_point');
             $table->string('remarks');
             $table->timestamps();
         });

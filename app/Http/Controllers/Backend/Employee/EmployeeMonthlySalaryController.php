@@ -74,6 +74,6 @@ class EmployeeMonthlySalaryController extends Controller
             ->setOptions(['defaultFont' => 'sans-serif'])
             ->setPaper('a4', 'portrait');
         return view('backend.employee.emplyee_monthly_salary.payslip_emplyee_monthly_salary', $data);
-        //return $pdf->download("registrantion_fee_" . $student_id . ".pdf");
+        //return $pdf->download("registrantion_fee_" . $request->employee_id . ".pdf");
     }
 }

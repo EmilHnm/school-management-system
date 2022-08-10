@@ -40,7 +40,7 @@ $route = Route::current()->getName();
             @endif
             <li class="treeview {{ ($prefix == '/profiles') ? 'active':'' }}">
                 <a href="#">
-                    <i data-feather="mail"></i> <span>Manage Profile</span>
+                    <i data-feather="credit-card"></i> <span>Manage Profile</span>
                     <span class="pull-right-container">
                     <i class="fa fa-angle-right pull-right"></i>
                     </span>
@@ -72,7 +72,7 @@ $route = Route::current()->getName();
             </li>
             <li class="treeview {{ ($prefix == '/students') ? 'active':'' }}">
                 <a href="#">
-                    <i data-feather="credit-card"></i> <span>Student Management</span>
+                    <i data-feather="users"></i> <span>Student Management</span>
                     <span class="pull-right-container">
                     <i class="fa fa-angle-right pull-right"></i>
                     </span>
@@ -88,7 +88,7 @@ $route = Route::current()->getName();
             </li>
             <li class="treeview {{ ($prefix == '/employees') ? 'active':'' }}">
                 <a href="#">
-                    <i data-feather="credit-card"></i> <span>Employee Management</span>
+                    <i data-feather="package"></i> <span>Employee Management</span>
                     <span class="pull-right-container">
                     <i class="fa fa-angle-right pull-right"></i>
                     </span>
@@ -103,7 +103,7 @@ $route = Route::current()->getName();
             </li>
             <li class="treeview {{ ($prefix == '/marks') ? 'active':'' }}">
                 <a href="#">
-                    <i data-feather="credit-card"></i> <span>Marks Management</span>
+                    <i data-feather="bookmark"></i> <span>Marks Management</span>
                     <span class="pull-right-container">
                     <i class="fa fa-angle-right pull-right"></i>
                     </span>
@@ -116,37 +116,38 @@ $route = Route::current()->getName();
             </li>
             <li class="treeview {{ ($prefix == '/accounts') ? 'active':'' }}">
                 <a href="#">
-                    <i data-feather="credit-card"></i> <span>Account Management</span>
+                    <i data-feather="inbox"></i> <span>Account Management</span>
                     <span class="pull-right-container">
                     <i class="fa fa-angle-right pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
                     <li class="{{ $route == 'student.fee.view' ? 'active' : '' }}"><a href="{{ route('student.fee.view') }}"><i class="ti-more"></i>Student Fee</a></li>
+                    <li class="{{ $route == 'account.salary.view' ? 'active' : '' }}"><a href="{{ route('account.salary.view') }}"><i class="ti-more"></i>Employee Salary</a></li>
+                    <li class="{{ $route == 'other.cost.view' ? 'active' : '' }}"><a href="{{ route('other.cost.view') }}"><i class="ti-more"></i>Other Cost</a></li>
                 </ul>
             </li>
-            <li class="header nav-small-cap">User Interface</li>
-            <li class="treeview">
-            <a href="#">
-                <i data-feather="grid"></i>
-                <span>Components</span>
-                <span class="pull-right-container">
-                <i class="fa fa-angle-right pull-right"></i>
-                </span>
-            </a>
-            <ul class="treeview-menu">
-                <li><a href="components_alerts.html"><i class="ti-more"></i>Alerts</a></li>
-                <li><a href="components_badges.html"><i class="ti-more"></i>Badge</a></li>
-            </ul>
+            <li class="header nav-small-cap">Report Interface</li>
+            <li class="treeview {{ ($prefix == '/reports') ? 'active':'' }}">
+                <a href="#">
+                    <i data-feather="server"></i> <span>Report Management</span>
+                    <span class="pull-right-container">
+                    <i class="fa fa-angle-right pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="{{ $route == 'profit.view' ? 'active' : '' }}"><a href="{{ route('profit.view') }}"><i class="ti-more"></i>Monthly / Yearly Profit</a></li>
+                    <li class="{{ $route == 'marksheet.generator.view' ? 'active' : '' }}"><a href="{{ route('marksheet.generator.view') }}"><i class="ti-more"></i>Marks Sheet Generator</a></li>
+                    <li class="{{ $route == 'attendance.report.view' ? 'active' : '' }}"><a href="{{ route('attendance.report.view') }}"><i class="ti-more"></i>Attendance Report</a></li>
+                    <li class="{{ $route == 'student.idcard.view' ? 'active' : '' }}"><a href="{{ route('student.idcard.view') }}"><i class="ti-more"></i>Student ID Card</a></li>
+                </ul>
             </li>
-
             <li>
             <a href="{{ route('admin.logout') }}">
                 <i data-feather="lock"></i>
                 <span>Log Out</span>
             </a>
             </li>
-
         </ul>
     </section>
 

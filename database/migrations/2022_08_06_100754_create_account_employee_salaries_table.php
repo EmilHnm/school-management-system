@@ -13,12 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('account_student_fees', function (Blueprint $table) {
+        Schema::create('account_employee_salaries', function (Blueprint $table) {
             $table->id();
-            $table->integer('year_id')->nullable();
-            $table->integer('class_id')->nullable();
-            $table->integer('student_id')->nullable()->comment('user_id');
-            $table->integer('fee_category_id')->nullable();
+            $table->integer('employee_id')->comment('user_id');
             $table->string('date')->nullable();
             $table->double('amount')->nullable();
             $table->timestamps();
@@ -32,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('account_student_fees');
+        Schema::dropIfExists('account_employee_salaries');
     }
 };

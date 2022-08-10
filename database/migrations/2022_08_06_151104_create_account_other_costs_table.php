@@ -13,14 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('account_student_fees', function (Blueprint $table) {
+        Schema::create('account_other_costs', function (Blueprint $table) {
             $table->id();
-            $table->integer('year_id')->nullable();
-            $table->integer('class_id')->nullable();
-            $table->integer('student_id')->nullable()->comment('user_id');
-            $table->integer('fee_category_id')->nullable();
-            $table->string('date')->nullable();
+            $table->date('date')->nullable();
             $table->double('amount')->nullable();
+            $table->longText('description')->nullable();
+            $table->string('receipt_image')->nullable();
             $table->timestamps();
         });
     }
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('account_student_fees');
+        Schema::dropIfExists('account_other_costs');
     }
 };

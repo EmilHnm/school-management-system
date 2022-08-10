@@ -6,7 +6,7 @@
         <section class="content">
         <div class="box">
             <div class="box-header with-border">
-                <h4 class="box-title">Add Fee Amount</h4>
+                <h4 class="box-title">Edit Fee Amount</h4>
             </div>
             <div class="box-body">
                 <div class="row">

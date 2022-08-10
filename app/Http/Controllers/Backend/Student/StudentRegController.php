@@ -324,4 +324,34 @@ class StudentRegController extends Controller
         return view('backend.student.student_reg.detail_student', $data);
         //return $pdf->download("student_details_" . $student_id . ".pdf");
     }
+
+    public function IdCardView()
+    {
+        $data['years'] = StudentYear::all();
+        $data['classes'] = StudentClass::all();
+        return view('backend.student.student_reg.idcard_student', $data);
+    }
+
+    public function IdCardGet(Request $request)
+    {
+        $id_no = $request->id_no;
+        $check_data = User::where('id_no', $id_no)->first()->id;
+        if ($check_data) {
+            $data['assign_student'] = AssignStudent::with(['student', 'student_class', 'student_year', 'student_group'])
+                ->where('student_id', $check_data)
+                ->first();
+            $data['id_no'] = $id_no;
+            $pdf = PDF::loadView('backend.student.student_reg.print_idcard_student', $data)
+                ->setOptions(['defaultFont' => 'sans-serif'])
+                ->setPaper('a4', 'portrait');
+            return view('backend.student.student_reg.print_idcard_student', $data);
+            //return $pdf->download("report_" . $id_no . '_' . date('Y-m-d') . ".pdf");
+        } else {
+            $message = array(
+                'alert-type' => 'error',
+                'message' => 'No data found'
+            );
+            return redirect()->back()->with($message);
+        }
+    }
 }

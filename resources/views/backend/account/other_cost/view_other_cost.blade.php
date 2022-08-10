@@ -8,8 +8,8 @@
             <div class="col-12">
                 <div class="box">
                     <div class="box-header with-border">
-                    <h3 class="box-title">Student Fee List</h3>
-                    <a href="{{ route('student.fee.add') }}" style="float: right" class="btn btn-rounded btn-success mb-5">Add / Edit Student Fee</a>
+                    <h3 class="box-title">Other Salary List</h3>
+                    <a href="{{ route('other.cost.add') }}" style="float: right" class="btn btn-rounded btn-success mb-5">Add Other Cost</a>
                 </div>
 
                 <div class="box-body">
@@ -18,40 +18,37 @@
                         <thead>
                             <tr>
                                 <th>SL</th>
-                                <th>ID No</th>
-                                <th>Name</th>
-                                <th>Year</th>
-                                <th>Class</th>
-                                <th>Fee Type</th>
-                                <th>Amount</th>
                                 <th>Date</th>
-
+                                <th>Amount</th>
+                                <th>Description</th>
+                                <th>Receipt Image</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($allData as $index => $value)
                                 <tr>
                                     <td>{{ $index+1 }}</td>
-                                    <td>{{ $value->student->id_no }}</td>
-                                    <td>{{ $value->student->name }}</td>
-                                    <td>{{ $value->student_year->name }}</td>
-                                    <td>{{ $value->student_class->name }}</td>
-                                    <td>{{ $value->fee_category->name }}</td>
+                                    <td>{{ $value->date }}</td>
                                     <td>{{ $value->amount }}</td>
-                                    <td>{{ date('M Y',strtotime($value->date)) }}</td>
+                                    <td>{{ $value->description }}</td>
+                                    <td>
+                                        <img id="showImg" src="{{  !empty($value['receipt_image'])  ? ('/upload/other_cost_images/'.$value['receipt_image']) : asset('upload/no_image.jpg')  }}" style="width:50px; height:50px;">
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('other.cost.edit', $value->id) }}" class="btn btn-info">Edit</a>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
                         <tfoot>
                             <tr>
                                 <th style="width:5%">SL</th>
-                                <th>ID No</th>
-                                <th>Name</th>
-                                <th>Year</th>
-                                <th>Class</th>
-                                <th>Fee Type</th>
-                                <th>Amount</th>
                                 <th>Date</th>
+                                <th>Amount</th>
+                                <th style="width:40%">Description</th>
+                                <th>Receipt Image</th>
+                                <th>Action</th>
                             </tr>
                         </tfoot>
                     </table>

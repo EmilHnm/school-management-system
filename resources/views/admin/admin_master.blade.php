@@ -19,6 +19,7 @@
 
 
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@mdi/font@6.9.96/css/materialdesignicons.min.css" >
 
 </head>
 
@@ -34,7 +35,7 @@
     <!-- Content Wrapper. Contains page content -->
     @yield('admin')
     <!-- /.content-wrapper -->
-   @include('admin.body.footer')
+    @include('admin.body.footer')
 
 
 
@@ -67,7 +68,6 @@
     <script type="text/javascript">
         document.addEventListener('click',function(e) {
             if (e.target.id == 'delete') {
-                console.log('delete');
                 e.preventDefault();
                 var link = e.target.getAttribute('href');
                 console.log(link);
