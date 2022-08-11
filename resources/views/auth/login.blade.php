@@ -27,8 +27,8 @@
                 <div class="row justify-content-center no-gutters">
                     <div class="col-lg-4 col-md-5 col-12">
                         <div class="content-top-agile p-10">
-                            <h2 class="text-white">Get started with Us</h2>
-                            <p class="text-white-50">Sign in to start your session</p>
+                            <h2 class="text-white">Swallowtail School Manager</h2>
+                            <p class="text-white-50">Get started with Us</p>
                         </div>
                         <div class="p-30 rounded30 box-shadowed b-2 b-dashed">
                             <form action="/login" method="post">
