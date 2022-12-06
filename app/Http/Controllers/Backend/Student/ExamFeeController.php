@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Backend\Student;
 
 use App\Models\ExamType;
-use PDF;
+// use PDF;
 use App\Models\StudentYear;
 use App\Models\StudentClass;
 use App\Models\StudentGroup;
@@ -91,8 +91,8 @@ class ExamFeeController extends Controller
             ->first();
         $data['assigns_student'] = AssignStudent::where('student_id', $student_id)->get();
 
-        $pdf = PDF::loadView('backend.student.exam_fee.detail_exam_fee', $data)
-            ->setOptions(['defaultFont' => 'sans-serif']);
+        // $pdf = PDF::loadView('backend.student.exam_fee.detail_exam_fee', $data)
+        //     ->setOptions(['defaultFont' => 'sans-serif']);
         return view('backend.student.exam_fee.detail_exam_fee', $data);
         //return $pdf->download("registrantion_fee_" . $student_id . ".pdf");
 

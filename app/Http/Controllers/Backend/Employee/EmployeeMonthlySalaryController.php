@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Backend\Employee;
 use App\Http\Controllers\Controller;
 use App\Models\EmployeeAttendance;
 use Illuminate\Http\Request;
-use PDF;
 
 class EmployeeMonthlySalaryController extends Controller
 {
@@ -70,9 +69,9 @@ class EmployeeMonthlySalaryController extends Controller
             ->where('employee_id', $request->employee_id)
             ->get();
         //dd($data['details'][0]['user']['name']);
-        $pdf = PDF::loadView('backend.employee.emplyee_monthly_salary.payslip_emplyee_monthly_salary', $data)
-            ->setOptions(['defaultFont' => 'sans-serif'])
-            ->setPaper('a4', 'portrait');
+        // $pdf = PDF::loadView('backend.employee.emplyee_monthly_salary.payslip_emplyee_monthly_salary', $data)
+        //     ->setOptions(['defaultFont' => 'sans-serif'])
+        //     ->setPaper('a4', 'portrait');
         return view('backend.employee.emplyee_monthly_salary.payslip_emplyee_monthly_salary', $data);
         //return $pdf->download("registrantion_fee_" . $request->employee_id . ".pdf");
     }

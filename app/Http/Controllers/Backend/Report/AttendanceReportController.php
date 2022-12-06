@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\EmployeeAttendance;
-use PDF;
+// use PDF;
 
 class AttendanceReportController extends Controller
 {
@@ -41,9 +41,9 @@ class AttendanceReportController extends Controller
                 ->where('attend_status', 'Leave')
                 ->get()->count();
             $data['month'] = date('Y-m', strtotime($request->date));
-            $pdf = PDF::loadView('backend.report.attendance_report.details_attendance_report', $data)
-                ->setOptions(['defaultFont' => 'sans-serif'])
-                ->setPaper('a3', 'portrait');
+            // $pdf = PDF::loadView('backend.report.attendance_report.details_attendance_report', $data)
+            //     ->setOptions(['defaultFont' => 'sans-serif'])
+            //     ->setPaper('a3', 'portrait');
             return view('backend.report.attendance_report.details_attendance_report', $data);
             //return $pdf->download("report_" . date('Y-m-d') . ".pdf");
         } else {

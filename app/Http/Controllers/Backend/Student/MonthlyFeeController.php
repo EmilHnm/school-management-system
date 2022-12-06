@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Backend\Student;
 
-use PDF;
+// use PDF;
 use App\Models\StudentYear;
 use App\Models\StudentClass;
 use App\Models\StudentGroup;
@@ -93,8 +93,8 @@ class MonthlyFeeController extends Controller
 
 
 
-        $pdf = PDF::loadView('backend.student.monthly_fee.detail_monthly_fee', $data)
-            ->setOptions(['defaultFont' => 'sans-serif']);
+        // $pdf = PDF::loadView('backend.student.monthly_fee.detail_monthly_fee', $data)
+        //     ->setOptions(['defaultFont' => 'sans-serif']);
         return view('backend.student.monthly_fee.detail_monthly_fee', $data);
         //return $pdf->download("registrantion_fee_" . $student_id . ".pdf");
     }

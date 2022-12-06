@@ -7,7 +7,7 @@ use App\Models\AccountOtherCost;
 use App\Models\AccountStudentFee;
 use App\Http\Controllers\Controller;
 use App\Models\AccountEmployeeSalary;
-use PDF;
+// use PDF;
 
 class ProfitController extends Controller
 {
@@ -61,9 +61,9 @@ class ProfitController extends Controller
         $data['end_month'] = date('Y-m', strtotime($request->end_date));
         $data['start_date'] = date('Y-m-d', strtotime($request->start_date));
         $data['end_date'] = date('Y-m-d', strtotime($request->end_date));
-        $pdf = PDF::loadView('backend.report.profit.details_profit', $data)
-            ->setOptions(['defaultFont' => 'sans-serif'])
-            ->setPaper('a3', 'portrait');
+        // $pdf = PDF::loadView('backend.report.profit.details_profit', $data)
+        //     ->setOptions(['defaultFont' => 'sans-serif'])
+        //     ->setPaper('a3', 'portrait');
         //return view('backend.report.profit.details_profit', $data);
         return $pdf->download("report_" . date('Y-m-d') . ".pdf");
     }

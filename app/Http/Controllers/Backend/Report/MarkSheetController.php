@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\MarksGrade;
 use App\Models\StudentMarks;
-use PDF;
+// use PDF;
 
 class MarkSheetController extends Controller
 {
@@ -98,9 +98,9 @@ class MarkSheetController extends Controller
                 ->where('id_no', $id_no)
                 ->get();
             $allGrade = MarksGrade::all();
-            $pdf = PDF::loadView('backend.report.mark_sheet.print_mark_sheet', compact('allGrade', 'allMarks', 'countFail'))
-                ->setOptions(['defaultFont' => 'sans-serif'])
-                ->setPaper('a3', 'portrait');
+            // $pdf = PDF::loadView('backend.report.mark_sheet.print_mark_sheet', compact('allGrade', 'allMarks', 'countFail'))
+            //     ->setOptions(['defaultFont' => 'sans-serif'])
+            //     ->setPaper('a3', 'portrait');
 
             return view('backend.report.mark_sheet.print_mark_sheet', compact('allGrade', 'allMarks', 'countFail'));
             //return $pdf->download("report_" . $id_no . '_' . date('Y-m-d') . ".pdf");
