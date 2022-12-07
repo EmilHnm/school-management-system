@@ -240,6 +240,13 @@ class StudentRegController extends Controller
         return view('backend.student.student_reg.promotion_student', $data);
     }
 
+    /**
+     * StudentUpdatePromotion
+     *
+     * @param  mixed $student_id
+     * @param  mixed $request
+     * @return void
+     */
     public function StudentUpdatePromotion($student_id, Request $request)
     {
         $validateData = $request->validate([
@@ -333,6 +340,11 @@ class StudentRegController extends Controller
         //return $pdf->download("student_details_" . $student_id . ".pdf");
     }
 
+    /**
+     * IdCardView
+     *
+     * @return void
+     */
     public function IdCardView()
     {
         $data['years'] = StudentYear::all();
@@ -340,6 +352,12 @@ class StudentRegController extends Controller
         return view('backend.student.student_reg.idcard_student', $data);
     }
 
+    /**
+     * IdCardGet
+     *
+     * @param  mixed $request
+     * @return void
+     */
     public function IdCardGet(Request $request)
     {
         $id_no = $request->id_no;
