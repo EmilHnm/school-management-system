@@ -140,6 +140,9 @@ $route = Route::current()->getName();
                     <li class="{{ $route == 'marksheet.generator.view' ? 'active' : '' }}"><a href="{{ route('marksheet.generator.view') }}"><i class="ti-more"></i>Marks Sheet Generator</a></li>
                     <li class="{{ $route == 'attendance.report.view' ? 'active' : '' }}"><a href="{{ route('attendance.report.view') }}"><i class="ti-more"></i>Attendance Report</a></li>
                     <li class="{{ $route == 'student.idcard.view' ? 'active' : '' }}"><a href="{{ route('student.idcard.view') }}"><i class="ti-more"></i>Student ID Card</a></li>
+                    @if (Auth::user()->role === "Admin")
+                    <li class="{{ $route == 'logs.view' ? 'active' : '' }}"><a href="{{ route('logs.view') }}" target="_blank"><i class="ti-more"></i>Open Logs</a></li>
+                    @endif
                 </ul>
             </li>
             <li>
