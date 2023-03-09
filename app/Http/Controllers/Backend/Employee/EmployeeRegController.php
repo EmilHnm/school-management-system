@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Backend\Employee;
 
-use PDF;
+// use PDF;
 use App\Models\User;
 use App\Models\Designation;
 use Illuminate\Http\Request;
@@ -170,8 +170,8 @@ class EmployeeRegController extends Controller
         $data['details'] = User::find($id);
         $data['designations'] = Designation::all();
         // dd($data);
-        $pdf = PDF::loadView('backend.employee.employee_reg.detail_employee_reg', $data)
-            ->setOptions(['defaultFont' => 'sans-serif']);
+        // $pdf = PDF::loadView('backend.employee.employee_reg.detail_employee_reg', $data)
+        //     ->setOptions(['defaultFont' => 'sans-serif']);
         return view('backend.employee.employee_reg.detail_employee_reg', $data);
         //return $pdf->download('employee_detail_' . $id . '.pdf');
     }

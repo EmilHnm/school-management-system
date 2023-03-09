@@ -2,287 +2,277 @@
 	<head>
         <title>Your Name</title>
         <link href='http://fonts.googleapis.com/css?family=Rokkitt:400,700|Lato:400,300' rel='stylesheet' type='text/css'>
-            <style>
-                /*Define color of the theme*/
-                :root {
-                    --main-color:#925de3;
-                }
+        <style>
+            /*Define color of the theme*/
+            :root {
+                --main-color:#925de3;
+            }
 
-                body {
-                background: white;
-                }
+            body {
+            background: white;
+            }
 
-                page[size="A4"] {
-                background: white;
-                width: 21cm;
-                height: 29.7cm;
-                display: block;
-                margin: 0 auto;
-                margin-bottom: 0.0cm;
-                box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+            page[size="A4"] {
+            background: white;
+            width: 21cm;
+            height: 29.7cm;
+            display: block;
+            margin: 0 auto;
+            margin-bottom: 0.0cm;
+            box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+            }
+            @media print {
+            body, page[size="A4"] {
+                margin: 0;
+                box-shadow: 0;
                 }
-                @media print {
-                body, page[size="A4"] {
-                    margin: 0;
-                    box-shadow: 0;
-                    }
-                }
+            }
+            .topBar {
+                padding: 25px 35px 10px;
+                border-bottom: 4px solid var(--main-color);
+                display: flex;
+            }
+            #photo {
+                width: 14.5%;
+                float: left;
+                margin-right: 30px;
+            }
+            .image_cropper {
+                vertical-align: middle;
+                width: 100px;
+                height: 100px;
+                position: relative;
+                overflow: hidden;
+                align-self: center;
+                border:5px solid var(--main-color);
+                border-radius: 200px;
+                -webkit-border-radius: 500px;
+                -moz-border-radius: 500px;
+            }
+            .icons{
+                width:16px;
+                height:16px;
+            }
+            #name h1 {
+                font-size: 2.5em;
+                font-weight: 500;
+                font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
+                margin-bottom: -6px;
+            }
+            #name h2 {
+                font-size: 1.2em;
+                margin-left: 2px;
+                font-weight: 100;
+                font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
+            }
+            #name {
+                float: left;
+            }
+            .contactDetails {
+                float: right;
+            }
 
+            #contactDetails ul {
+                list-style-type: none;
+                font-size: 0.8em;
+                margin-top: 2px;
+                text-align: right;
+            }
+            #contactDetails ul li {
+                margin-bottom: 3px;
+                color: #444;
+            }
+            #contactDetails ul li a, a[href^=tel] {
+                color: #444;
+                text-decoration: none;
+            }
+            #mainDocument {
+                padding: 0 40px;
+            }
+            section {
+                border-top: 1px solid #dedede;
+            }
 
-                .topBar {
-                    padding: 25px 35px 10px;
-                    border-bottom: 4px solid var(--main-color);
-                    display: flex;
-                }
+            section:first-child {
+                border-top: 0;
+            }
 
-                #photo {
-                    width: 14.5%;
-                    float: left;
-                    margin-right: 30px;
-                }
-                .image_cropper {
-                    vertical-align: middle;
-                    width: 100px;
-                    height: 100px;
-                    position: relative;
-                    overflow: hidden;
-                    align-self: center;
-                    border:5px solid var(--main-color);
-                    border-radius: 200px;
-                    -webkit-border-radius: 500px;
-                    -moz-border-radius: 500px;
-                }
+            .sectionTitle{
+                font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
+                font-size: 1.5em;
+                margin-bottom: -10px;
+                text-transform: uppercase;
+            }
 
-                .icons{
-                    width:16px;
-                    height:16px;
-                }
+            .workContent{
+                margin-left: 20px;
+                margin-bottom: -10px;
+            }
 
-                #name h1 {
-                    font-size: 2.5em;
-                    font-weight: 500;
-                    font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
-                    margin-bottom: -6px;
-                }
+            .workTitle {
+                font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
+                font-size: 1.4em;
+                font-style: bold;
+                margin-bottom: -10px;
+            }
 
-                #name h2 {
-                    font-size: 1.2em;
-                    margin-left: 2px;
-                    font-weight: 100;
-                    font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
-                }
+            .workCompany {
+                font-size: 0.8em;
+                margin-bottom: -10px;
+            }
+            .workDates {
+                font-size: 0.8em;
+                font-style: italic;
+                color: var(--main-color);
+                margin-bottom: -10px;
+                float: left;
+            }
 
-                #name {
-                    float: left;
-                }
-                .contactDetails {
-                    float: right;
-                }
+            .workLocation {
+                font-size: 0.8em;
+                font-style: italic;
+                color:  var(--main-color);
+                margin-bottom: -10px;
+                float: right;
+            }
+            .workDates {
+                font-size: 0.8em;
+                font-style: italic;
+                color: var(--main-color);
+                margin-bottom: -10px;
+                float: left;
+            }
 
-                #contactDetails ul {
-                    list-style-type: none;
-                    font-size: 0.8em;
-                    margin-top: 2px;
-                    text-align: right;
-                }
-                #contactDetails ul li {
-                    margin-bottom: 3px;
-                    color: #444;
-                }
-                #contactDetails ul li a, a[href^=tel] {
-                    color: #444;
-                    text-decoration: none;
-                }
+            .workBullets{
+                padding-left: 1.2em;
+                padding-bottom: 0.2em;
+            }
+            .workBullets li {
+                color: var(--main-color);
+                padding-left:0;
+                margin-bottom: -10px;
+            }
+            .workBullets p{
+                color: black;
+                font-size: 0.8em;
+            }
 
+            .eduContent{
+                margin-left: 20px;
+                margin-bottom: -10px;
+            }
 
-                #mainDocument {
-                    padding: 0 40px;
-                }
+            .eduUni {
+                font-size: 0.8em;
+                margin-bottom: -10px;
+            }
+            .eduDates {
+                font-size: 0.8em;
+                font-style: italic;
+                color: var(--main-color);
+                margin-bottom: -10px;
+            }
 
-                section {
-                    border-top: 1px solid #dedede;
-                }
+            .eduLocation {
+                font-size: 0.8em;
+                font-style: italic;
+                color:  var(--main-color);
+                margin-bottom: -10px;
+                float: right;
+            }
 
-                section:first-child {
-                    border-top: 0;
-                }
+            .eduBullets{
+                padding-left: 1.2em;
+                padding-bottom: 0.2em;
+            }
+            .eduBullets li {
+                color: var(--main-color);
+                padding-left:0;
+                margin-bottom: -10px;
+            }
+            .eduBullets p{
+                color: black;
+                font-size: 0.8em;
+            }
 
-                .sectionTitle{
-                    font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
-                    font-size: 1.5em;
-                    margin-bottom: -10px;
-                    text-transform: uppercase;
-                }
+            .keySkills {
+                list-style-type: none;
+                -moz-column-count:3;
+                -webkit-column-count:3;
+                column-count:3;
+                margin-bottom: 20px;
+                font-size: 1em;
+                color: #444;
+            }
 
-                .workContent{
-                    margin-left: 20px;
-                    margin-bottom: -10px;
-                }
-
-                .workTitle {
-                    font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
-                    font-size: 1.4em;
-                    font-style: bold;
-                    margin-bottom: -10px;
-                }
-
-                .workCompany {
-                    font-size: 0.8em;
-                    margin-bottom: -10px;
-                }
-                .workDates {
-                    font-size: 0.8em;
-                    font-style: italic;
-                    color: var(--main-color);
-                    margin-bottom: -10px;
-                    float: left;
-                }
-
-                .workLocation {
-                    font-size: 0.8em;
-                    font-style: italic;
-                    color:  var(--main-color);
-                    margin-bottom: -10px;
-                    float: right;
-                }
-                .workDates {
-                    font-size: 0.8em;
-                    font-style: italic;
-                    color: var(--main-color);
-                    margin-bottom: -10px;
-                    float: left;
-                }
-
-                .workBullets{
-                    padding-left: 1.2em;
-                    padding-bottom: 0.2em;
-                }
-                .workBullets li {
-                    color: var(--main-color);
-                    padding-left:0;
-                    margin-bottom: -10px;
-                }
-                .workBullets p{
-                    color: black;
-                    font-size: 0.8em;
-                }
-
-                .eduContent{
-                    margin-left: 20px;
-                    margin-bottom: -10px;
-                }
-
-                .eduUni {
-                    font-size: 0.8em;
-                    margin-bottom: -10px;
-                }
-                .eduDates {
-                    font-size: 0.8em;
-                    font-style: italic;
-                    color: var(--main-color);
-                    margin-bottom: -10px;
-                }
-
-                .eduLocation {
-                    font-size: 0.8em;
-                    font-style: italic;
-                    color:  var(--main-color);
-                    margin-bottom: -10px;
-                    float: right;
-                }
-
-                .eduBullets{
-                    padding-left: 1.2em;
-                    padding-bottom: 0.2em;
-                }
-                .eduBullets li {
-                    color: var(--main-color);
-                    padding-left:0;
-                    margin-bottom: -10px;
-                }
-                .eduBullets p{
-                    color: black;
-                    font-size: 0.8em;
-                }
-
-                .keySkills {
-                    list-style-type: none;
-                    -moz-column-count:3;
-                    -webkit-column-count:3;
-                    column-count:3;
-                    margin-bottom: 20px;
-                    font-size: 1em;
-                    color: #444;
-                }
-
-                .keySkills ul li {
-                    margin-bottom: 3px;
-                }
+            .keySkills ul li {
+                margin-bottom: 3px;
+            }
 
 
-                .rectangle{
-                    margin-left: -40px;
-                    width:20px;
-                    height:20px;
-                    background: var(--main-color);
-                    float: left;
-                    vertical-align: bottom;
-                }
+            .rectangle{
+                margin-left: -40px;
+                width:20px;
+                height:20px;
+                background: var(--main-color);
+                float: left;
+                vertical-align: bottom;
+            }
 
-                .otherSkills {
-                    width:100%;
-                    margin-top: 20px;
-                }
+            .otherSkills {
+                width:100%;
+                margin-top: 20px;
+            }
 
-                .otherSkills ul{
-                    list-style: none;
-                    font-size: 0.8em;
-                }
+            .otherSkills ul{
+                list-style: none;
+                font-size: 0.8em;
+            }
 
-                .languagesSection{
-                    margin-bottom: -20px;
-                }
+            .languagesSection{
+                margin-bottom: -20px;
+            }
 
-                .languages {
-                    width:100%;
-                    margin-top: 20px;
-                }
+            .languages {
+                width:100%;
+                margin-top: 20px;
+            }
 
-                .languages  ul{
-                    list-style: none;
-                }
+            .languages  ul{
+                list-style: none;
+            }
 
-                .otherInterests{
-                    margin-left: 20px;
-                    margin-top: 10px;
-                }
+            .otherInterests{
+                margin-left: 20px;
+                margin-top: 10px;
+            }
 
-                .otherInterests ul{
-                    font-size: 0.8em;
-                    list-style: none;
-                }
-                .personal-table {
-                    width: 80%;
-                    margin: 10px auto;
-                }
-                .table-title {
-                    font-size: 1.1em;
-                    font-weight: bold;
-                    color: var(--main-color);
-                    padding: 5px 0;
-                    width: 25%;
+            .otherInterests ul{
+                font-size: 0.8em;
+                list-style: none;
+            }
+            .personal-table {
+                width: 80%;
+                margin: 10px auto;
+            }
+            .table-title {
+                font-size: 1.1em;
+                font-weight: bold;
+                color: var(--main-color);
+                padding: 5px 0;
+                width: 25%;
 
-                }
-                .table-title-study {
-                    font-size: 1.1em;
-                    font-weight: bold;
-                    background: var(--main-color);
-                    padding: 5px 0;
-                    width: 20%;
-                    color: white;
-                    text-align: center;
-                }
-            </style>
+            }
+            .table-title-study {
+                font-size: 1.1em;
+                font-weight: bold;
+                background: var(--main-color);
+                padding: 5px 0;
+                width: 20%;
+                color: white;
+                text-align: center;
+            }
+        </style>
     </head>
     <body>
     <page size="A4"> <!-- Begin first page -->

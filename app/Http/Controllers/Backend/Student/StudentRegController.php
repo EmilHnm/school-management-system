@@ -12,7 +12,6 @@ use App\Models\AssignStudent;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Models\DiscountStudent;
-use PDF;
 
 class StudentRegController extends Controller
 {
@@ -21,20 +20,16 @@ class StudentRegController extends Controller
     {
         $data['years'] = StudentYear::all();
         $data['classes'] = StudentClass::all();
-
-        $data['year_id'] = StudentYear::orderBy('id', 'asc')->first()->id;
-        $data['class_id'] = StudentClass::orderBy('id', 'asc')->first()->id;
+        $data['year_id'] = StudentYear::orderBy('id', 'asc')->first()?->id;
+        $data['class_id'] = StudentClass::orderBy('id', 'asc')->first()?->id;
         $data['allData'] = AssignStudent::where('year_id', $data['year_id'])->where('class_id', $data['class_id'])->get();
         return view('backend.student.student_reg.view_student', $data);
     }
 
     public function StudentClassYearWise(Request $request)
     {
-
-
         $data['years'] = StudentYear::all();
         $data['classes'] = StudentClass::all();
-
         $data['year_id'] = $request->year_id;
         $data['class_id'] = $request->class_id;
         $data['allData'] = AssignStudent::where('year_id', $request->year_id)->where('class_id', $request->class_id)->get();
@@ -182,7 +177,6 @@ class StudentRegController extends Controller
             'shift_id' => 'required',
         ]);
 
-        // dd($request->discount);
         DB::transaction(function () use ($request, $student_id) {
 
             //Update to User table
@@ -242,6 +236,13 @@ class StudentRegController extends Controller
         return view('backend.student.student_reg.promotion_student', $data);
     }
 
+    /**
+     * StudentUpdatePromotion
+     *
+     * @param  mixed $student_id
+     * @param  mixed $request
+     * @return void
+     */
     public function StudentUpdatePromotion($student_id, Request $request)
     {
         $validateData = $request->validate([
@@ -314,17 +315,32 @@ class StudentRegController extends Controller
         $data['groups'] = StudentGroup::all();
         $data['shifts'] = StudentShift::all();
 
-        $data['editData'] = AssignStudent::with(['student', 'discount'])
+        $data['editData'] = AssignStudent::with([
+            'student',
+            'discount',
+            'student_class',
+            'student_year', 'student_group', 'student_shift'
+        ])
             ->where('student_id', $student_id)
             ->first();
-
-        //dd($data['assigns_student']);
-        $pdf = PDF::loadView('backend.student.student_reg.detail_student', $data)
-            ->setOptions(['defaultFont' => 'sans-serif']);
+        $data['assigns_student'] =
+            AssignStudent::with([
+                'student_class',
+                'student_year', 'student_group', 'student_shift'
+            ])
+            ->where('student_id', $student_id)
+            ->get();
+        //$pdf = PDF::loadView('backend.student.student_reg.detail_student', $data)
+        //    ->setOptions(['defaultFont' => 'sans-serif']);
         return view('backend.student.student_reg.detail_student', $data);
         //return $pdf->download("student_details_" . $student_id . ".pdf");
     }
 
+    /**
+     * IdCardView
+     *
+     * @return void
+     */
     public function IdCardView()
     {
         $data['years'] = StudentYear::all();
@@ -332,6 +348,12 @@ class StudentRegController extends Controller
         return view('backend.student.student_reg.idcard_student', $data);
     }
 
+    /**
+     * IdCardGet
+     *
+     * @param  mixed $request
+     * @return void
+     */
     public function IdCardGet(Request $request)
     {
         $id_no = $request->id_no;
@@ -341,9 +363,9 @@ class StudentRegController extends Controller
                 ->where('student_id', $check_data)
                 ->first();
             $data['id_no'] = $id_no;
-            $pdf = PDF::loadView('backend.student.student_reg.print_idcard_student', $data)
-                ->setOptions(['defaultFont' => 'sans-serif'])
-                ->setPaper('a4', 'portrait');
+            // $pdf = PDF::loadView('backend.student.student_reg.print_idcard_student', $data)
+            //     ->setOptions(['defaultFont' => 'sans-serif'])
+            //     ->setPaper('a4', 'portrait');
             return view('backend.student.student_reg.print_idcard_student', $data);
             //return $pdf->download("report_" . $id_no . '_' . date('Y-m-d') . ".pdf");
         } else {

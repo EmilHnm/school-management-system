@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\DefaultController;
 use App\Http\Controllers\Backend\ProfileController;
+use Rap2hpoutre\LaravelLogViewer\LogViewerController;
 use App\Http\Controllers\Backend\Marks\GradeController;
 use App\Http\Controllers\Backend\Marks\MarksController;
 use App\Http\Controllers\Backend\Report\ProfitController;
@@ -271,5 +272,7 @@ Route::group(['middleware' => ['prevent_back_history']], function () {
         // Profit Routes
         Route::get('student/idcard/view', [StudentRegController::class, 'IdCardView'])->name('student.idcard.view');
         Route::get('student/idcard/get', [StudentRegController::class, 'IdCardGet'])->name('report.student.idcard.get');
+        // Log Routes
+        Route::get('logs', [LogViewerController::class, 'index'])->name('logs.view');
     });
 });
