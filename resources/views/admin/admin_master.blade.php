@@ -34,7 +34,8 @@
 
     <!-- Content Wrapper. Contains page content -->
     @yield('admin')
-    <!-- /.content-wrapper -->
+
+    <!-- Bottom footer. Contains author-->
     @include('admin.body.footer')
 
 

@@ -79,9 +79,6 @@
                                     <!-- /.col -->
                                 </div>
                             </form>
-
-
-
                             <div class="text-center">
                                 <p class="mt-15 mb-0 text-white">Don't have an account? <a href="/register" class="text-info ml-5">Sign Up</a></p>
                             </div>
@@ -91,8 +88,6 @@
             </div>
         </div>
     </div>
-
-
     <!-- Vendor JS -->
     <script src="{{ asset('backend/js/vendors.min.js') }}"></script>
     <script src="{{ asset('../assets/icons/feather-icons/feather.min.js') }}"></script>

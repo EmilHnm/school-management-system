@@ -48,8 +48,6 @@ use App\Http\Controllers\Backend\Employee\EmployeeMonthlySalaryController;
 
 Route::group(['middleware' => ['prevent_back_history']], function () {
 
-
-
     Route::get('/', function () {
         return view('auth.login');
     })->middleware('guest');

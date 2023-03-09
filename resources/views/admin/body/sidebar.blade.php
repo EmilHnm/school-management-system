@@ -83,7 +83,6 @@ $route = Route::current()->getName();
                     <li class="{{ $route == 'registration.fee.view' ? 'active' : '' }}"><a href="{{ route('registration.fee.view') }}"><i class="ti-more"></i>Registrantion Fee</a></li>
                     <li class="{{ $route == 'monthly.fee.view' ? 'active' : '' }}"><a href="{{ route('monthly.fee.view') }}"><i class="ti-more"></i>Monthly Fee</a></li>
                     <li class="{{ $route == 'exam.fee.view' ? 'active' : '' }}"><a href="{{ route('exam.fee.view') }}"><i class="ti-more"></i>Exam Fee</a></li>
-
                 </ul>
             </li>
             <li class="treeview {{ ($prefix == '/employees') ? 'active':'' }}">
