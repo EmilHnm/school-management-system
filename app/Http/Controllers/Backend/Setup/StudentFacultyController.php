@@ -40,7 +40,6 @@ class StudentFacultyController extends Controller
     public function StudentFacultyEdit($id)
     {
         $editData = StudentFaculty::find($id);
-
         return view('backend.setup.student_faculty.edit_faculty', compact('editData'));
     }
 

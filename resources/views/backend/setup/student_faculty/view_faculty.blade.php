@@ -27,9 +27,9 @@
                                                     <td>{{ $index + 1 }}</td>
                                                     <td>{{ $student->name }}</td>
                                                     <td>
-                                                        <a href="{{ route('student.class.edit', $student->id) }}"
+                                                        <a href="{{ route('student.faculty.edit', $student->id) }}"
                                                             class="btn btn-info mb-5">Edit</a>
-                                                        <a href="{{ route('student.class.delete', $student->id) }}"
+                                                        <a href="{{ route('student.faculty.delete', $student->id) }}"
                                                             class="btn btn-danger mb-5" id="delete">Delete</a>
                                                     </td>
                                                 </tr>

@@ -4,6 +4,7 @@ namespace App\Console\Commands\Import;
 
 use App\Models\StudentFaculty;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Storage;
 
 class StudentFacultyImporter extends Command
 {
@@ -29,8 +30,7 @@ class StudentFacultyImporter extends Command
     public function handle()
     {
         $this->info("Importing student-faculty from file");
-
-        $file = fopen('', 'r');
+        $file = file_get_contents(storage_path('app/SourceFile/faculties.txt'), 'r');
         $faculties = explode("\n", $file);
         foreach ($faculties as $faculty) {
             if (empty($faculty)) {
