@@ -12,7 +12,7 @@ class StudentFacultyImporter extends Command
      *
      * @var string
      */
-    protected $signature = 'import:student-faculty {--path="https://swallowtail-school.vn/storage/faculties.txt" : path to file}';
+    protected $signature = 'import:student-faculty';
 
     /**
      * The console command description.
@@ -28,20 +28,9 @@ class StudentFacultyImporter extends Command
      */
     public function handle()
     {
-        $path = $this->option('path');
-        $this->info("Importing student-faculty from $path");
-        $stream_opts = [
-            "ssl" => [
-                "verify_peer" => false,
-                "verify_peer_name" => false,
-            ]
-        ];
+        $this->info("Importing student-faculty from file");
 
-        $file = file_get_contents(
-            $path,
-            false,
-            stream_context_create($stream_opts)
-        );
+        $file = fopen('', 'r');
         $faculties = explode("\n", $file);
         foreach ($faculties as $faculty) {
             if (empty($faculty)) {
