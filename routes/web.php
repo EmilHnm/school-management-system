@@ -27,7 +27,6 @@ use App\Http\Controllers\Backend\Setup\AssignSubjectController;
 use App\Http\Controllers\Backend\Setup\SchoolSubjectController;
 use App\Http\Controllers\Backend\Student\StudentRollController;
 use App\Http\Controllers\Backend\Employee\EmployeeRegController;
-use App\Http\Controllers\Backend\Report\StudentResultController;
 use App\Http\Controllers\Backend\Account\AccountSalaryController;
 use App\Http\Controllers\Backend\Employee\EmployeeLeaveController;
 use App\Http\Controllers\Backend\Employee\EmployeeSalaryController;
@@ -35,6 +34,7 @@ use App\Http\Controllers\Backend\Report\AttendanceReportController;
 use App\Http\Controllers\Backend\Student\RegistrationFeeController;
 use App\Http\Controllers\Backend\Employee\EmployeeAttendanceController;
 use App\Http\Controllers\Backend\Employee\EmployeeMonthlySalaryController;
+use App\Http\Controllers\Backend\Setup\StudentFacultyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -92,6 +92,13 @@ Route::group(['middleware' => ['prevent_back_history']], function () {
         Route::get('student/class/edit/{id}', [StudentClassController::class, 'StudentClassEdit'])->name('student.class.edit');
         Route::post('student/class/update/{id}', [StudentClassController::class, 'StudentClassUpdate'])->name('student.class.update');
         Route::get('student/class/delete/{id}', [StudentClassController::class, 'StudentClassDelete'])->name('student.class.delete');
+        // Student faculty routes
+        Route::get('student/faculty/view', [StudentFacultyController::class, 'StudentFacultyView'])->name('student.faculty.view');
+        Route::get('student/faculty/add', [StudentFacultyController::class, 'StudentFacultyAdd'])->name('student.faculty.add');
+        Route::post('student/faculty/store', [StudentFacultyController::class, 'StudentFacultyStore'])->name('student.faculty.store');
+        Route::get('student/faculty/edit/{id}', [StudentFacultyController::class, 'StudentFacultyEdit'])->name('student.faculty.edit');
+        Route::post('student/faculty/update/{id}', [StudentFacultyController::class, 'StudentFacultyUpdate'])->name('student.faculty.update');
+        Route::get('student/faculty/delete/{id}', [StudentFacultyController::class, 'StudentFacultyDelete'])->name('student.faculty.delete');
         // Student year routes
         Route::get('student/year/view', [StudentYearController::class, 'YearView'])->name('student.year.view');
         Route::get('student/year/add', [StudentYearController::class, 'StudentYearAdd'])->name('student.year.add');
